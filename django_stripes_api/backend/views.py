@@ -27,13 +27,21 @@ def stripe_config(request):
 
 
 def create_checkout_session(self, pk):
-    stripe.verify_ssl_certs = False
+    # stripe.verify_ssl_certs = False
     stripe.api_key = settings.STRIPE_SECRET_KEY
     item = get_object_or_404(Item, pk=pk)
-    product = stripe.Product.create(
-        name = item.name,
-        description= item.description,
+    product = stripe.Product.search(
+        query=f"active:'true' AND name:'{item.name}'",
     )
+    data = product['data']
+    if data:
+        product_id = data[0]['id']
+        product = stripe.Product.retrieve(product_id)
+    else:
+        product = stripe.Product.create(
+            name = item.name,
+            description= item.description,
+        )
     price = stripe.Price.create(
         product= product.id,
         unit_amount=int(item.price * CENTS_IN_DOLLAR),
