@@ -1,8 +1,12 @@
 import os
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = 'xocrb=ricz*5gx3#ssu80ir*%a=pj=@%5-4md7p6#3d2g6mgc^'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 DEBUG = True
 
@@ -82,5 +86,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-STRIPE_PUBLISHABLE_KEY = 'pk_test_51Lh338KoBZDfji8ZzbofMU44RowMQAvdABetwAsp1sVBBFfknz8zeefJPq4Kkl9STl5QH2UZ0ysxQeXGCez8fg9E00yQdsLyrP'
-STRIPE_SECRET_KEY = 'sk_test_51Lh338KoBZDfji8Z3xItl7uKHdfjP6TyyWels9yvn8zN0SOW2jiEgShc6n2LDHgJqkFWyFL6KIoTwpHlWJ0j7zMx00U4vu3vlc'
+STRIPE_PUBLISHABLE_KEY = os.getenv('STRIPE_PUBLISHABLE_KEY')
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')

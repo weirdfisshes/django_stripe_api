@@ -36,7 +36,7 @@ def create_checkout_session(self, pk):
     )
     price = stripe.Price.create(
         product= product.id,
-        unit_amount=int(item.price *CENTS_IN_DOLLAR),
+        unit_amount=int(item.price * CENTS_IN_DOLLAR),
         currency='usd',
     )
     checkout_session = stripe.checkout.Session.create(
