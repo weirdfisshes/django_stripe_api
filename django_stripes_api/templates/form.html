@@ -1,14 +1,14 @@
 {% load static %}
 <html>
   <head>
-    <title>Buy Item 1</title>
+    <title>Buy {{ item.name }}</title>
     <script src="https://js.stripe.com/v3/"></script>
     <script src="{% static 'main.js' %}"></script> 
   </head>
   <body>
     <h1>{{ item.name }}</h1>
     <p>{{ item.description }}</p>
-    <p>{{ item.price }}</p>
+    <p>{{ item.price }}$</p>
     <button class="button is-primary" id="submitBtn">Buy</button>
   </body>
 </html>

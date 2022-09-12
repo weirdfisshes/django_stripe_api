@@ -6,6 +6,8 @@ from django.shortcuts import render, get_object_or_404
 from .models import Item
 import stripe
 
+CENTS_IN_DOLLAR = 100
+
 class HomePageView(TemplateView):
     template_name = 'form.html'
 
@@ -27,10 +29,20 @@ def stripe_config(request):
 def create_checkout_session(self, pk):
     stripe.verify_ssl_certs = False
     stripe.api_key = settings.STRIPE_SECRET_KEY
+    item = get_object_or_404(Item, pk=pk)
+    product = stripe.Product.create(
+        name = item.name,
+        description= item.description,
+    )
+    price = stripe.Price.create(
+        product= product.id,
+        unit_amount=int(item.price *CENTS_IN_DOLLAR),
+        currency='usd',
+    )
     checkout_session = stripe.checkout.Session.create(
         line_items=[
             {
-                'price': 'price_1Lh3GaKoBZDfji8ZyIDPWcU6',
+                'price': price.stripe_id,
                 'quantity': 1
             }
         ],

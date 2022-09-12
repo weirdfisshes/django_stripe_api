@@ -11,8 +11,10 @@ class Item(models.Model):
         'Описание',
         help_text='Описание товара'
     )
-    price = models.PositiveIntegerField(
+    price = models.DecimalField(
         'Стоимость',
+        max_digits=6,
+        decimal_places=2,
         help_text='Стоимость товара'
     )
 
