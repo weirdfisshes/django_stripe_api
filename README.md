@@ -59,7 +59,7 @@ http://127.0.0.1:8000/
 
 ### Технологии:
 
-Python 3, Django, PostgreSQL, Stripe API, dotend, Docker
+Python 3, Django, PostgreSQL, Stripe API, dotenv, Docker
 
 ### Автор:
 
