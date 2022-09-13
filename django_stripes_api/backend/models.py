@@ -20,14 +20,3 @@ class Item(models.Model):
 
     def __str__(self):
         return self.name
-
-class Order(models.Model):
-    item = models.ForeignKey(
-        Item,
-        on_delete=models.CASCADE,
-        related_name='amounts',
-        verbose_name='Товар',
-    )
-    amount = models.PositiveSmallIntegerField(
-        'Количество товаров',
-    )
