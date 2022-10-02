@@ -41,7 +41,7 @@ Collect static:
 docker-compose exec web python manage.py collectstatic --no-input
 ```
 
-Projecr URL:
+Project URL:
 
 ```
 http://127.0.0.1:8000/
