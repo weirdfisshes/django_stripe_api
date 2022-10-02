@@ -1,66 +1,56 @@
 # Django + Stripe API
- 
-Проект для демонстрации использования Stripe API в Django-проекте.
-stripe.com/docs - платёжная система с подробным API и бесплатным тестовым режимом для имитации и тестирования платежей. С помощью python библиотеки stripe можно удобно создавать платежные формы разных видов, сохранять данные клиента, и реализовывать прочие платежные функции. 
+### Description
+Django website and one-time payments with Stripe (stripe.com/docs - Payment processing platform for the Internet). Python 3, Django, PostgreSQL, Stripe API, dotenv, Docker. Author: Nikita Burtsev (https://t.me/telekasster)
 
 
-### Как запустить проект:
+### Getting started
 
-Клонировать репозиторий, в корне создать файл .env, заполнить его по образцу:
+Clone this repository, create file .env in the project directoty with variables:
 
 ```
-STRIPE_PUBLISHABLE_KEY = '<ваш STRIPE_PUBLISHABLE_KEY >'
-STRIPE_SECRET_KEY = '<ваш STRIPE_SECRET_KEY>'
-SECRET_KEY = '<ваш django SECRET_KEY>'
-VERIFY_SSL_CERTS = 'False' ('False' если возникает ошибка SSL-сертификатов при запуске, 'True' если не возникает)
-DB_ENGINE=django.db.backends.postgresql #подключим PostgreSQL
-DB_NAME=название_вашей_БД
-POSTGRES_USER=имя_пользователя_БД
-POSTGRES_PASSWORD=пароль_пользователя_БД
-DB_HOST=db #название контейнера БД, по умолчанию db
-DB_PORT=5432 #порт БД, по умолчанию 5432
+STRIPE_PUBLISHABLE_KEY = '<your STRIPE_PUBLISHABLE_KEY >'
+STRIPE_SECRET_KEY = '<your STRIPE_SECRET_KEY>'
+SECRET_KEY = '<your django SECRET_KEY>'
+VERIFY_SSL_CERTS = 'False' ('False' to avoid SSL-certificate issues, 'True' if you don't have any issues)
+DB_ENGINE=django.db.backends.postgresql #for PostgreSQL
+DB_NAME='name'
+POSTGRES_USER='username'
+POSTGRES_PASSWORD='password'
+DB_HOST=db #DB host
+DB_PORT=5432 #DB port, default: 5432
 ```
-Установите Docker. Из корня выполинте конманду для сборки образа:
+Install Docker, build an image:
 
 ```
 docker-compose up -d --build
 ```
-Выполните миграции
+Apply migrations:
 ```
 docker-compose exec web python manage.py migrate 
 ```
 
-Создайте суперюзера:
+Create superuser:
 
 ```
 docker-compose exec web python manage.py createsuperuser
 ```
 
-Соберите статику
+Collect static:
 
 ```
 docker-compose exec web python manage.py collectstatic --no-input
 ```
 
-После этого проект будет доступен по ссылке:
+Projecr URL:
 
 ```
 http://127.0.0.1:8000/
 ```
 
 
-### Как протестировать:
+### How to test:
 
-1. После создания суперюзера создайте в админке несколько Item
-2. Перейдите по ссылке http://127.0.0.1:8000/item/{id}, где {id} это id созданного Item
-3. Нажмите "Buy" и вы будете перенаправлены на Stripe для оплаты
-4. После оплаты вы увидите либо подтверждение, что платеж прошел, либо сообщение о невозможности произвести платеж
-
-
-### Технологии:
-
-Python 3, Django, PostgreSQL, Stripe API, dotenv, Docker
-
-### Автор:
-
-Никита Бурцев (https://t.me/telekasster)
+1. Create superuser. then create Items;
+2. Open Item (http://127.0.0.1:8000/item/{id});
+3. Click "Buy" and you will see Stripe payment page;
+4. After paying you will be redirecter to 'success/' or 'cancelled/'.
