@@ -50,7 +50,7 @@ http://127.0.0.1:8000/
 
 ### How to test:
 
-1. Create superuser. then create Items;
-2. Open Item (http://127.0.0.1:8000/item/{id});
-3. Click "Buy" and you will see Stripe payment page;
+1. Create a superuser, then create items;
+2. Open an Item (http://127.0.0.1:8000/item/{id});
+3. Click "Buy" and you will see a Stripe payment page;
 4. After paying you will be redirecter to 'success/' or 'cancelled/'.
