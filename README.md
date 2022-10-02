@@ -5,7 +5,7 @@ Django website and one-time payments with Stripe (stripe.com/docs - Payment proc
 
 ### Getting started
 
-Clone this repository, create file .env in the project directoty with variables:
+Clone this repository, create file '.env' in the project directory with variables:
 
 ```
 STRIPE_PUBLISHABLE_KEY = '<your STRIPE_PUBLISHABLE_KEY >'
