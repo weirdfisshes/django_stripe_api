@@ -53,4 +53,4 @@ http://127.0.0.1:8000/
 1. Create a superuser, then create items;
 2. Open an Item (http://127.0.0.1:8000/item/{id});
 3. Click "Buy" and you will see a Stripe payment page;
-4. After paying you will be redirecter to 'success/' or 'cancelled/'.
+4. After paying you will be redirected to 'success/' or 'cancelled/'.
