@@ -1,10 +1,8 @@
 # Django + Stripe API
 ### Description
-Django website and one-time payments with Stripe (stripe.com/docs - Payment processing platform for the Internet). Python 3, Django, PostgreSQL, Stripe API, dotenv, Docker. Author: Nikita Burtsev (https://t.me/telekasster)
-
+Django website and one-time payments with Stripe (stripe.com/docs - Payment processing platform for the Internet).
 
 ### Getting started
-
 Clone this repository, create file '.env' in the project directory with variables:
 
 ```
@@ -49,8 +47,13 @@ http://127.0.0.1:8000/
 
 
 ### How to test:
-
 1. Create a superuser, then create items;
 2. Open an Item (http://127.0.0.1:8000/item/{id});
 3. Click "Buy" and you will see a Stripe payment page;
 4. After paying you will be redirected to 'success/' or 'cancelled/'.
+
+### Tech stack
+Python 3, Django, PostgreSQL, Stripe API, dotenv, Docker
+
+### Author
+Nikita Burtsev (https://t.me/telekasster)
